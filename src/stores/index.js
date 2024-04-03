@@ -6,6 +6,33 @@ const options = {
   url: "https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=true",
 };
 
+export const useModalStore = defineStore("modal", {
+  state: () => {
+    return {
+      showModal: false,
+      cat: null,
+    };
+  },
+  actions: {
+    openModal(cat) {
+      this.modal = true;
+      this.cat = cat;
+    },
+    closeModal() {
+      this.modal = false;
+      this.cat = null;
+    },
+  },
+  getters: {
+    getModal: (state) => {
+      return state.modal;
+    },
+    getCat: (state) => {
+      return state.cat;
+    },
+  },
+});
+
 export const useCatStore = defineStore("cat", {
   state: () => {
     return { cats: [] };
