@@ -6,6 +6,33 @@ const options = {
   url: "https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=true",
 };
 
+export const useModalStore = defineStore("modal", {
+  state: () => {
+    return {
+      showModal: false,
+      cat: null,
+    };
+  },
+  actions: {
+    openModal(cat) {
+      this.showModal = true;
+      this.cat = cat;
+    },
+    closeModal() {
+      this.showModal = false;
+      this.cat = null;
+    },
+  },
+  getters: {
+    getModal: (state) => {
+      return state.showModal;
+    },
+    getCat: (state) => {
+      return state.cat;
+    },
+  },
+});
+
 export const useCatStore = defineStore("cat", {
   state: () => {
     return { cats: [] };
@@ -14,7 +41,6 @@ export const useCatStore = defineStore("cat", {
     async fetchCats() {
       try {
         const response = await axios.request(options);
-        console.log(response.data);
         this.cats = response.data;
       } catch (error) {
         console.error(error);
