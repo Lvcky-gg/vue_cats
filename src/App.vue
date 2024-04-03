@@ -1,42 +1,12 @@
 <script setup>
-import {  onMounted,  ref} from 'vue';
-import Card from 'primevue/card';
-import { useCatStore, useModalStore } from './stores/index'
-import Modal from './components/Modal.vue';
-
-
-const catStore = useCatStore();
-const modalStore = useModalStore();
-const loading = ref(true);
-
-onMounted(async() => {
-    await catStore.fetchCats();
-    modalStore.value = false;
-    loading.value = false;
-});
-
-//POLYAS
-// make sure to create a store for show modal. we can use this to modify between the two
-//components
 </script>
 
 
 
 
 <template>
-  <div class="grid grid-cols-5">
-  <Card class="w=1/2 rounded-lg bg-black m-2" v-for="cat in catStore.cats" :key="cat.id">
-    <template #title>{{  }}</template>
-    <template #content class="">
-      <img class="p-6 m-auto " :src="cat.url" alt="cat" />
-      <button class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-auto mb-2">Learn More</button>
-    </template>
-  </Card>
-</div>
-<Modal v-if="showModal" @close="showModal = false"></Modal>
+<RouterView />
 
 </template>
 
-<style scoped>
 
-</style>
