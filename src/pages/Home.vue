@@ -8,12 +8,16 @@ import Modal from '../components/Modal.vue';
 const catStore = useCatStore();
 const modalStore = useModalStore();
 const loading = ref(true);
+let showModal = ref(false);
 
 onMounted(async() => {
     await catStore.fetchCats();
     modalStore.value = false;
     loading.value = false;
 });
+const changeModal =(cat) => {
+    showModal.value = !showModal.value;
+    modalStore.openModal(cat)};
 </script>
 
 
@@ -23,10 +27,10 @@ onMounted(async() => {
       <template #title>{{  }}</template>
       <template #content class="">
         <img class="p-6 m-auto " :src="cat.url" alt="cat" />
-        <button class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-auto mb-2">Learn More</button>
+        <button class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-auto mb-2" @click="changeModal(cat)">Learn More</button>
       </template>
     </Card>
   </div>
-  <Modal v-if="showModal" @close="showModal = false"></Modal>
+  <Modal v-if="showModal"  @close="showModal = false"></Modal>
   
   </template>
