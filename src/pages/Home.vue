@@ -14,9 +14,9 @@ onMounted(async() => {
     await catStore.fetchCats();
     loading.value = false;
 });
-const changeModal =(cat) => {
+const changeModal =async(cat) => {
     showModal.value = !showModal.value;
-    modalStore.openModal(cat)};
+    modalStore.openModal(await catStore.fetchCat(cat.id))};
 
 
 </script>

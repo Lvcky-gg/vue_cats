@@ -41,7 +41,6 @@ export const useCatStore = defineStore("cat", {
     async fetchCats() {
       try {
         const response = await axios.request(options);
-        console.log(response.data);
         this.cats = response.data;
       } catch (error) {
         console.error(error);
