@@ -12,12 +12,13 @@ let showModal = ref(false);
 
 onMounted(async() => {
     await catStore.fetchCats();
-    modalStore.value = false;
     loading.value = false;
 });
 const changeModal =(cat) => {
     showModal.value = !showModal.value;
     modalStore.openModal(cat)};
+
+
 </script>
 
 
@@ -31,6 +32,6 @@ const changeModal =(cat) => {
       </template>
     </Card>
   </div>
-  <Modal v-if="showModal"  @close="showModal = false"></Modal>
+  <Modal v-if="modalStore.showModal"  :showModal="showModal"></Modal>
   
   </template>

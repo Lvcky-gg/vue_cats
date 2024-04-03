@@ -1,8 +1,11 @@
 <script setup>
 import { useModalStore } from '../stores/index'
+import { defineProps } from 'vue';
+
 const modalStore = useModalStore();
+
 const changeModal =() =>{
-    modalStore.value = false;
+    modalStore.closeModal();
 };
 </script>
 

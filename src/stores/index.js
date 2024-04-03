@@ -15,17 +15,17 @@ export const useModalStore = defineStore("modal", {
   },
   actions: {
     openModal(cat) {
-      this.modal = true;
+      this.showModal = true;
       this.cat = cat;
     },
     closeModal() {
-      this.modal = false;
+      this.showModal = false;
       this.cat = null;
     },
   },
   getters: {
     getModal: (state) => {
-      return state.modal;
+      return state.showModal;
     },
     getCat: (state) => {
       return state.cat;
