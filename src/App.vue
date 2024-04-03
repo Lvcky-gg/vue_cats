@@ -23,7 +23,7 @@ console.log(catStore)
     <template #title>{{  }}</template>
     <template #content class="">
       <img class="p-6 m-auto " :src="cat.url" alt="cat" />
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">Learn More</button>
+      <button class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-auto mb-2">Learn More</button>
     </template>
   </Card>
 </div>
